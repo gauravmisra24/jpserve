@@ -35,7 +35,7 @@ Usages:
     
 """
 
-from socketserver import StreamRequestHandler, ThreadingTCPServer, ForkingTCPServer
+from SocketServer import StreamRequestHandler, ThreadingTCPServer, ForkingTCPServer
 import logging
 import os
 import threading
@@ -201,7 +201,7 @@ class PThreadingTCPServer(ThreadingTCPServer):
 class PForkingTCPServer(ForkingTCPServer):
     def __init__(self, server_address, RequestHandlerClass, bind_and_activate=True):
         """Constructor.  May be extended, do not override."""
-        ThreadingTCPServer.__init__(self, server_address, RequestHandlerClass)
+        ForkingTCPServer.__init__(self, server_address, RequestHandlerClass)
         self.stopped = False
         
     def shutdown(self):
