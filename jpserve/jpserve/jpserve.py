@@ -119,7 +119,7 @@ class ServeHandler(StreamRequestHandler):
             #!}
     """  
     def handle(self):
-        self.request.setblocking(False)
+        self.request.setblocking(True)
             
         while True:  
             if self.server.stopped:
@@ -182,7 +182,7 @@ class ServeHandler(StreamRequestHandler):
     def toJSON(self, local_vars):
         rs = {"success": local_vars["_success_"], "msg": local_vars["_msg_"], "result": json.dumps(local_vars["_result_"]) }
         response = json.dumps(rs, indent=4)
-        response = bytes(response, "utf-8")
+        response = bytes(response).encode("utf-8")
         
         return response
         
